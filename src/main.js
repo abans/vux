@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import VueI18n from 'vue-i18n'
 import Router from 'vue-router'
 import App from './App'
 
@@ -86,6 +87,26 @@ const FastClick = require('fastclick')
 FastClick.attach(document.body)
 
 Vue.use(Router)
+var locales = {
+  en: {
+    message: {
+      hello: 'Hello world',
+      lang: 'Language'
+    }
+  },
+  ja: {
+    message: {
+      hello: 'こんにちは、世界',
+      lang: '言語'
+    }
+  }
+}
+Vue.use(VueI18n)
+Vue.config.lang = 'ja'
+Object.keys(locales).forEach(function (lang) {
+  Vue.locale(lang, locales[lang])
+})
+
 Vue.config.devtools = true
 
 const router = new Router()

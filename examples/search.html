@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title></title>
+    <link rel="stylesheet" href="../dist/vux.css">
+    <script src="vue.1.0.26.js"></script>
+  </head>
+  <body>
+    <div id="demo">
+      <search @result-click="resultClick" :results="results" :value.sync="value"></search>
+    </div>
+
+    <script src="../dist/components/search/index.js"></script>
+
+    <script>
+    Vue.component('search', vuxSearch)
+    var vm = new Vue({
+      el: '#demo',
+      data: {
+        results: initResult(),
+        value: ''
+      },
+      methods: {
+        resultClick (item) {
+          alert('you click the result item: ' + JSON.stringify(item))
+        },
+        getResult (val) {
+          console.log(this.value);
+          this.results = getResult(this.value)
+        }
+      }
+    })
+
+    vm.$watch('value', function(newVal, oldVal) {
+      this.results = getResult (newVal);
+    });
+    function initResult (val) {
+      var rs = []
+        for (var i = 0; i < 40; i++) {
+          rs.push({
+            title: `result: ${i + 1} `,
+            other: i
+          })
+        }
+        return rs
+    }
+    function getResult (val) {
+      var rs = [];
+      for (var i = 0; i < 40; i++) {
+        if(val && val.indexOf(i) >= 0) {
+          rs.push({
+            title: `${val} result: ${i} `,
+            other: i
+          })
+        }
+      }
+      return rs;
+    }
+    </script>
+  </body>
+</html>

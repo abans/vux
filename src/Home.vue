@@ -9,6 +9,11 @@
       <p class="vux-notice">v{{version}}</p>
     </div>
     <group>
+      <cell is-link title="message.lang" value="message.hello" @click="changeLanguage">
+        <span class="demo-icon" slot="icon" style="color:#F70968">&#xe631;</span>
+      </cell>
+    </group>
+    <group>
       <cell title="Demo" link="/demo" value="演示">
         <span class="demo-icon" slot="icon" style="color:#F70968">&#xe633;</span>
       </cell>
@@ -26,6 +31,7 @@
 
 <script>
 import { Cell, Group } from './components'
+import Vue from 'vue'
 const version = require('../package.json').version
 export default {
   components: {
@@ -35,6 +41,15 @@ export default {
   data () {
     return {
       version: version
+    }
+  },
+  methods: {
+    changeLanguage () {
+      if (Vue.config.lang === 'ja') {
+        Vue.config.lang = 'en'
+      } else {
+        Vue.config.lang = 'ja'
+      }
     }
   }
 }

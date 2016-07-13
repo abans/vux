@@ -9,22 +9,129 @@
     <title></title>
     <link rel="stylesheet" href="../dist/vux.css">
     <script src="vue.1.0.26.js"></script>
+    <script src="vue-i18n.min.js"></script>
   </head>
   <body>
     <div id="demo">
       <group>
-        <cell title="vue" value="cool"></cell>
+        <cell title="message.lang" @click="changeLanguage" is-link>{{ $t("message.hello") }}</cell>
+        <cell title="背景模糊" value="" link="./blur.html"></cell>
+        <cell title="半透明遮罩" value="" link="./masker.html"></cell>
+        <cell title="Switcher" value="" link="./switch.html"></cell>
+        <cell title="Search" value="" link="./search.html"></cell>
+        <switch title="Alert" :value.sync="show"></switch>
+        <switch title="Confirm" :value.sync="show1"></switch>
+        <switch title="默认提示" :value.sync="show2"></switch>
+        <switch title="文字提示" :value.sync="show3"></switch>
+        <switch title="提示取消" :value.sync="show4"></switch>
+        <switch title="提示禁止" :value.sync="show5"></switch>
+        <switch title="设置出现时间1s" :value.sync="show6"></switch>
+        <switch title="long text" :value.sync="show7"></switch>
+        <switch title="show actionsheet1" :value.sync="show8"></switch>
+        <switch title="show actionsheet2" :value.sync="show9"></switch>
+        <switch title="show actionsheet3" :value.sync="show10"></switch>
       </group>
+      <alert :show.sync="show" title="恭喜您" button-text="好棒，去ATM转账">
+      <p style="text-align:center;">中大奖了！99999元只要转4000元手续费</p>
+      </alert>
+      <confirm :show.sync="show1" title="confirm deleting the item"><p style="text-align:center;">Are you sure?</p></confirm>
+      <toast :show.sync="show2" >默认提示</toast>
+      <toast :show.sync="show3" type="text">处理成功</toast>
+      <toast :show.sync="show4" type="cancel">取消操作</toast>
+      <toast :show.sync="show5" type="warn">禁止操作</toast>
+      <toast :show.sync="show6" :time="1000">1s关闭</toast>
+      <toast :show.sync="show7" type="text" width="20em">Talk is cheap, show me the code.</toast>
+      <actionsheet :show.sync="show8" :menus="menus1"></actionsheet>
+      <!-- 显示取消按钮 -->
+      <actionsheet :show.sync="show9" :menus="menus2" show-cancel></actionsheet>
+      <!-- 菜单响应 -->
+      <actionsheet :show.sync="show10" :menus="menus3" @on-click-menu="click" show-cancel @cancel-text="取消"></actionsheet>
+
     </div>
 
     <script src="../dist/components/group/index.js"></script>
     <script src="../dist/components/cell/index.js"></script>
+    <script src="../dist/components/switch/index.js"></script>
+    <script src="../dist/components/alert/index.js"></script>
+    <script src="../dist/components/confirm/index.js"></script>
+    <script src="../dist/components/toast/index.js"></script>
+    <script src="../dist/components/actionsheet/index.js"></script>
 
     <script>
+    // ready translated locales
+    var locales = {
+      en: {
+        message: {
+          hello: 'Hello world',
+          lang: 'Language'
+        }
+      },
+      ja: {
+        message: {
+          hello: 'こんにちは、世界',
+          lang: '言語'
+        }
+      }
+    }
+    Vue.use(VueI18n)
+
+    // set lang
+    Vue.config.lang = 'ja'
+
+    // set locales
+    Object.keys(locales).forEach(function (lang) {
+      Vue.locale(lang, locales[lang])
+    })
+
     Vue.component('group', vuxGroup)
     Vue.component('cell', vuxCell)
+    Vue.component('switch', vuxSwitch)
+    Vue.component('alert', vuxAlert)
+    Vue.component('confirm', vuxConfirm)
+    Vue.component('toast', vuxToast)
+    Vue.component('actionsheet', vuxActionsheet)
+
     new Vue({
-      el: '#demo'
+      el: '#demo',
+      data: {
+        show: false,
+        show1: false,
+        show2: false,
+        show3: false,
+        show4: false,
+        show5: false,
+        show6: false,
+        show7: false,
+        show8: false,
+        show9: false,
+        show10: false,
+        menus1:{
+          menu1: 'Share to friends',
+          menu2: 'Share to timeline'
+        },
+        menus2: {
+          menu1: 'Take Photo',
+          menu2: 'Choose from photos'
+        },
+        menus3: {
+          menu1: 'friends comment'
+        }
+      },
+      methods: {
+        hello: function() {
+          alert('hello world.');
+        },
+        click: function() {
+          alert('clicked');
+        },
+        changeLanguage: function() {
+          if(Vue.config.lang == "ja") {
+            Vue.config.lang ='en';
+          } else {
+            Vue.config.lang ='ja';
+          }
+        }
+      }
     })
     </script>
   </body>

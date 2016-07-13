@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title></title>
+    <link rel="stylesheet" href="../dist/vux.css">
+    <script src="vue.1.0.26.js"></script>
+  </head>
+  <body>
+    <div id="demo">
+      <group>
+        <switch title="无线网络" :value=true @on-change="change"></switch>
+        <switch title="有线网络" :value=true @on-change="change"></switch>
+        <switch title="独立卫浴" :value=true @on-change="change"></switch>
+        <switch title="不接受宠物家庭" :value=true @on-change="change"></switch>
+        <switch title="相仿年龄孩子" :value=true @on-change="change"></switch>
+        <switch title="提供衣柜" :value=true @on-change="change"></switch>
+        <switch title="提供书桌" :value=true @on-change="change"></switch>
+        <switch title="Default popup" :value.sync="show"></switch>
+        <switch title="Full popup" inline-desc="full" :value.sync="show1"></switch>
+      </group>
+      <popup :show.sync="show">
+      <div class="popup0">
+        <group>
+          <switch title="Another Switcher" :value.sync="show"></switch>
+        </group>
+      </div>
+      </popup><popup :show.sync="show1" height="100%">
+      <div class="popup1">
+        <group>
+          <switch title="Another Switcher" :value.sync="show1"></switch>
+        </group>
+      </div>
+      </popup>
+    </div>
+
+    <script src="../dist/components/group/index.js"></script>
+    <script src="../dist/components/switch/index.js"></script>
+    <script src="../dist/components/popup/index.js"></script>
+
+    <script>
+    Vue.component('group', vuxGroup)
+    Vue.component('switch', vuxSwitch)
+    Vue.component('popup', vuxPopup)
+    new Vue({
+      el: '#demo',
+      methods: {
+        change: function(val) {
+          console.log('change', val);
+        },
+        data:{
+          show:false,
+          show1: false
+        }
+      }
+    })
+    </script>
+  </body>
+</html>
