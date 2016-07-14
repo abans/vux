@@ -1,6 +1,7 @@
 <template>
   <div class="vux-range-input-box" style="position:relative;margin-right:30px;margin-left:50px;">
     <input class="vux-range-input" v-model="value" number>
+    <input class="vux-range-input2" v-model="value2" number v-if="dual">
   </div>
 </template>
 
@@ -14,6 +15,10 @@ export default {
       default: 0,
       type: Number
     },
+    value2: {
+      default: 0,
+      type: Number
+    },
     min: {
       type: Number,
       default: 0
@@ -24,6 +29,7 @@ export default {
       type: Number,
       default: 100
     },
+    dual: Boolean,
     step: {
       type: Number,
       default: 0
@@ -57,6 +63,9 @@ export default {
       options.step = this.step
     }
     this.range = new Powerange(this.$el.querySelector('.vux-range-input'), options)
+    if (this.dual) {
+      this.range2 = new Powerange(this.$el.querySelector('.vux-range-input2'), options)
+    }
     const handleTop = (this.rangeHandleHeight - this.rangeBarHeight) / 2
     this.$el.querySelector('.range-handle').style.top = `-${handleTop}px`
     this.$el.querySelector('.range-bar').style.height = `${this.rangeBarHeight}px`
@@ -64,12 +73,25 @@ export default {
   watch: {
     value (val) {
       this.range.setStart(val)
+    },
+    value2 (val) {
+      this.range2.setStart(val)
     }
   }
 }
 </script>
 
 <style>
+.range-bar{
+  position: absolute;
+}
+.range-handle{
+  z-index: 10;
+  top: -13px!important;
+}
+.range-quantity {
+  background-color: #a9acb1;
+}
 @import './powerange.css';
 </style>
 
