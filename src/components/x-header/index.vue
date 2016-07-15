@@ -51,7 +51,7 @@ export default {
   position: relative;
   padding: 3px 0;
   box-sizing: border-box;
-  background-color: #35495e;
+  background-color: #575757;
 }
 .vux-header .vux-header-title,.vux-header h1 {
   margin: 0 88px;

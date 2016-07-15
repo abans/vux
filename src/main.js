@@ -91,13 +91,15 @@ var locales = {
   en: {
     message: {
       hello: 'Hello world',
-      lang: 'Language'
+      lang: 'Language',
+      cancel: 'Cancel'
     }
   },
   ja: {
     message: {
       hello: 'こんにちは、世界',
-      lang: '言語'
+      lang: '言語',
+      cancel: 'キャンセル'
     }
   }
 }

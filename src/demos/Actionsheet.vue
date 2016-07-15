@@ -2,11 +2,11 @@
   <div>
     <group>
       <switch title="Normal Usage" :value.sync="show1"></switch>
-      <switch title="Show cancel menu" :value.sync="show2"></switch>
+      <switch title="message.lang" :value.sync="show2"></switch>
       <switch title="menu as tips" :value.sync="show3"></switch>
     </group>
     <actionsheet :show.sync="show1" :menus="menus1" @on-click-menu="click"></actionsheet>
-    <actionsheet :show.sync="show2" :menus="menus2" @on-click-menu="click" show-cancel></actionsheet>
+    <actionsheet :show.sync="show2" :menus="menus2" @on-click-menu="click" show-cancel cancel-text="message.cancel"></actionsheet>
     <actionsheet :show.sync="show3" :menus="menus3" @on-click-menu="click" @on-click-menu-delete="onDelete" show-cancel></actionsheet>
     <toast :show.sync="showSuccess">Deleted~</toast>
   </div>
@@ -14,6 +14,8 @@
 
 <script>
 import { Actionsheet, Group, Switch, Toast } from '../components'
+import Vue from 'vue'
+Vue.config.lang = 'ja'
 
 export default {
   components: {
@@ -31,8 +33,8 @@ export default {
       },
       show2: false,
       menus2: {
-        menu1: 'Take Photo',
-        menu2: 'Choose from photos'
+        menu1: 'message.hello',
+        menu2: 'message.lang'
       },
       show3: false,
       showSuccess: false,
@@ -45,6 +47,7 @@ export default {
   methods: {
     click (key) {
       console.log(key)
+      Vue.config.lang = Vue.config.lang === 'en' ? 'ja' : 'en'
     },
     onDelete () {
       this.showSuccess = true
