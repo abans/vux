@@ -1,10 +1,11 @@
 <template>
   <a class="weui_cell" href="javascript:">
-    <div class="weui_cell_bd weui_cell_primary">
-      <p>{{title}}</p>
-      <inline-desc v-if="inlineDesc">{{inlineDesc}}</inline-desc>
+    <div class="weui_cell_bd" :class="{'weui_cell_primary':primary==='title'}">
+      <p>{{$t(title)}}</p>
+      <inline-desc v-if="inlineDesc">{{$t(inlineDesc)}}</inline-desc>
     </div>
-    <div class="weui_cell_ft with_arrow vux-datetime-value">{{value || placeholder}}</div>
+    <div class="weui_cell_ft vux-datetime-value" :class="{'weui_cell_primary':primary==='content', 'with_arrow': isLink, 'text_center': isCalendar}">{{value || $t(placeholder)}}</div>
+    <span class="aicon aicon-calendar" v-if="isCalendar"></span>
   </a>
 </template>
 
@@ -21,9 +22,15 @@ export default {
     InlineDesc
   },
   props: {
+    isLink: Boolean,
+    isCalendar: Boolean,
     format: {
       type: String,
       default: 'YYYY-MM-DD'
+    },
+    primary: {
+      type: String,
+      default: 'title'
     },
     title: {
       type: String,
@@ -245,4 +252,6 @@ export default {
   flex: 1;
   text-align: center;
 }
+.aicon {color:#888;}
+.text_center{text-align: center;}
 </style>

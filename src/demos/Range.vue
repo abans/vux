@@ -1,8 +1,9 @@
 <template>
   <div>
     <group title="default range">
-      <cell title="Default" :inline-desc="data1 + ' - ' + data100" primary="content">
+      <cell primary="content">
         <range slot="value" :value.sync="data1" :value2.sync="data100" dual :min="100" :max="999"></range>
+        <div style="text-align:center;">{{data1}} - {{data100}}</div>
       </cell>
       <cell title="allow decimals" :inline-desc="'value is: '+data2" primary="content">
         <range slot="value" :value.sync="data2" decimal></range>
@@ -77,8 +78,8 @@ export default {
   },
   data () {
     return {
-      data1: 0,
-      data100: 0,
+      data1: 200,
+      data100: 400,
       data2: 0,
       data3: 20,
       data4: 18,

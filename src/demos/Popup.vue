@@ -20,17 +20,44 @@
     <toast :show.sync="showToast">You did it!</toast>
 
     <popup :show.sync="show1" height="100%">
-      <div class="popup1">
-        <group>
-          <switch title="Another Switcher" :value.sync="show1"></switch>
-        </group>
-      </div>
+      <scroller height="100%" lock-x>
+        <div class="">
+          <group>
+            <switch title="Another Switcher" :value.sync="show1"></switch>
+          </group>
+          <group>
+            <cell title="current value" :value="listValue"></cell>
+          </group>
+          <br>
+          <div v-for="i in 3" v-if="i >= 1">
+            <inline-calendar
+            :render-month="[2016, i]"
+            hide-header
+            :return-six-rows="false"
+            :value.sync="listValue"
+            :show-last-month="false"
+            :show-next-month="false"
+            :render-on-value-change="false"></inline-calendar>
+          </div>
+        </div>
+      </scroller>
     </popup>
 
-    <popup :show.sync="show2" height="200px" @on-first-show="resetScroller">
-      <scroller height="100px" lock-x style="border:1px solid red;" v-ref:scroller>
+    <popup :show.sync="show2" height="100%" @on-first-show="resetScroller">
+      <scroller height="100%" lock-x v-ref:scroller use-pullup @pullup:loading="load1">
         <div>
-          <p v-for="i of 10">{{i}}</p>
+          <div v-for="i in n1" v-if="i >= 1">
+            <div>2016 / {{i}}</div>
+            <inline-calendar
+            :disable-past="true"
+            :render-month="[2016, i]"
+            hide-header
+            :return-six-rows="false"
+            :value.sync="listValue"
+            :show-last-month="false"
+            :show-next-month="false"
+            :render-on-value-change="false"></inline-calendar>
+          </div>
         </div>
       </scroller>
     </popup>
@@ -78,20 +105,24 @@
 </template>
 
 <script>
-import { Popup, Group, Switch, Scroller, Toast, Address, AddressChinaData } from '../components'
+import InlineCalendar from '../components/inline-calendar'
+import { Popup, Group, Cell, Switch, Scroller, Toast, Address, AddressChinaData } from '../components'
 
 export default {
   components: {
     Popup,
     Group,
+    Cell,
     Switch,
     Scroller,
+    InlineCalendar,
     Toast,
     Address
   },
   data () {
     return {
       addressData: AddressChinaData,
+      listValue: '',
       show: false,
       show1: false,
       show2: false,
@@ -101,10 +132,17 @@ export default {
       show6: false,
       title6: '默认空的',
       value6: [],
+      n1: 10,
       showToast: false
     }
   },
   methods: {
+    load1 (uuid) {
+      this.n1 += 10
+      setTimeout(() => {
+        this.$broadcast('pullup:reset', uuid)
+      }, 10)
+    },
     resetScroller () {
       this.$refs.scroller.reset()
     },

@@ -1,7 +1,7 @@
 <template>
   <div>
     <group title="default format: YYYY-MM-DD">
-      <datetime :value.sync="value1" @on-change="change" title="Birthday"></datetime>
+      <datetime :value.sync="value1" is-calendar @on-change="change" title="" primary="content"></datetime>
     </group>
 
     <group title="YYYY-MM-DD HH:mm">

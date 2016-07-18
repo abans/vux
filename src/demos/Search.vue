@@ -1,7 +1,7 @@
 <template>
   <div>
     <img src="../assets/demo/filter_bg.jpg" style="width: 100%">
-    <search @result-click="resultClick" @on-change="getResult" :results="results" :value.sync="value"></search>
+    <search placeholder="请选择学校" @result-click="resultClick" @on-change="getResult" :results="results" :value.sync="value"></search>
   </div>
 </template>
 
@@ -14,7 +14,6 @@ export default {
   },
   methods: {
     resultClick (item) {
-      alert('you click the result item: ' + JSON.stringify(item))
     },
     getResult (val) {
       this.results = getResult(this.value)

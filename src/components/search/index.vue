@@ -5,15 +5,16 @@
         <div class="vux-search-mask" @click="touch" v-show="!isFixed"></div>
         <div class="weui_search_inner">
           <i class="weui_icon_search"></i>
-          <input type="text" class="weui_search_input" id="search_input" placeholder="{{placeholder}}" autocomplete="off" required v-model="value" v-el:input/>
+          <input type="text" class="weui_search_input" id="search_input" placeholder="{{$t(placeholder)}}" autocomplete="off" required v-model="value" v-el:input/>
           <a href="javascript:" class="weui_icon_clear" id="search_clear" @click="clear"></a>
         </div>
         <label for="search_input" class="weui_search_text" id="search_text">
           <i class="weui_icon_search"></i>
-          <span>{{placeholder}}</span>
+          <span v-if="!value">{{$t(placeholder)}}</span>
+          <span v-if="value">{{selectedItem.title}}</span>
         </label>
       </form>
-      <a href="javascript:" class="weui_search_cancel" id="search_cancel" @click="cancel">{{cancelText}}</a>
+      <a href="javascript:" class="weui_search_cancel" id="search_cancel" @click="cancel">{{$t(cancelText)}}</a>
     </div>
     <div class="weui_cells weui_cells_access vux-search_show" id="search_show" v-show="isFixed && results.length && value">
       <div class="weui_cell" v-for="item in results" @click="handleResultClick(item)">
@@ -34,7 +35,7 @@ export default {
     },
     cancelText: {
       type: String,
-      default: 'cancel'
+      default: 'Cancel'
     },
     value: {
       type: String,
@@ -66,6 +67,7 @@ export default {
     },
     handleResultClick (item) {
       this.$emit('result-click', item)
+      this.selectedItem = item
       this.isCancel = true
       this.isFixed = false
     },
@@ -83,7 +85,8 @@ export default {
     return {
       isCancel: true,
       isFocus: false,
-      isFixed: false
+      isFixed: false,
+      selectedItem: ''
     }
   },
   watch: {
@@ -112,8 +115,8 @@ export default {
   height: 100%;
   left: 0;
   top: 0;
-  z-index: 5;
-  background: rgba(255, 255, 255, 0.8);
+  z-index: 15;
+  background: #F5F5F9;
   backdrop-filter: blur(5px);
 }
 .vux-search-box {
@@ -130,6 +133,6 @@ export default {
   top: 0;
   width: 100%;
   height: 100%;
-  z-index: 5;
+  z-index: 15;
 }
 </style>
