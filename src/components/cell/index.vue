@@ -8,7 +8,7 @@
         {{$t(title)}}
         <slot name="after-title"></slot>
       </p>
-      <inline-desc>{{$t(inlineDesc)}}</inline-desc>
+      <inline-desc v-if="inlineDesc">{{$t(inlineDesc)}}</inline-desc>
     </div>
     <div class="weui_cell_ft" :class="{'weui_cell_primary':primary==='content', 'with_arrow': isLink || !!link}">
       {{$t(value)}}
@@ -21,6 +21,7 @@
 <script>
 import InlineDesc from '../inline-desc'
 import { go } from '../../libs/router'
+let Afn
 
 export default {
   components: {
@@ -41,7 +42,11 @@ export default {
   },
   methods: {
     onClick () {
-      go(this.link, this.$router)
+      if (Afn && Afn.window) {
+        Afn.window.open(this.link, '', '_blank')
+      } else {
+        go(this.link, this.$router)
+      }
     }
   }
 }
@@ -63,5 +68,17 @@ export default {
   position: relative;
   top: -1px;
   margin-left: .3em;
+}
+.weui_cell_bd p{
+  font-size: 14px;
+  color: #b5b5b5;
+}
+.weui_cell_bd p:only-child{
+  font-size: 17px;
+  color: #666;
+}
+.weui_cell_bd p+span{
+  color: #666;
+  font-size:17px;
 }
 </style>

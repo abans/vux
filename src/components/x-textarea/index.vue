@@ -1,7 +1,7 @@
 <template>
-  <div class="weui_cell">
+  <div class="weui_cell" style="padding:0;">
     <div class="weui_cell_bd weui_cell_primary">
-      <textarea class="weui_textarea" placeholder="{{placeholder}}" :name="name" :rows="rows" :cols="cols" v-model="value" :style="textareaStyle" :maxlength="max"></textarea>
+      <textarea class="weui_textarea" placeholder="{{$t(placeholder)}}" :name="name" :rows="rows" :cols="cols" v-model="value" :style="textareaStyle" :maxlength="max"></textarea>
       <div class="weui_textarea_counter" v-show="showCounter && max"><span>{{count}}</span>/{{max}}</div>
     </div>
   </div>

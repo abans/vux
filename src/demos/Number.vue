@@ -25,8 +25,8 @@
     </group>
     
     <group title="with other element">
-      <x-number title="Number" :min="-5" :max="8" :value="1" type="inline"></x-number>
-      <x-number title="Number" :min="-5" :max="8" :value="1" type="inline"></x-number>
+      <x-number title="Number" :min="0" :max="6" :fillable="false" :value="0" type="inline"></x-number>
+      <x-number title="Number" :min="0" :max="6" :fillable="false" :value="0" type="inline"></x-number>
       <switch title="Other element" :value.sync="true"></switch>
     </group>
   </div>

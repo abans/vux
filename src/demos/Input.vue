@@ -2,7 +2,7 @@
   <div>
 
     <group title="Default">
-      <x-input title="message" placeholder="I'm placeholder"></x-input>
+      <x-input title="message" :show-warn="true" placeholder="I'm placeholder"></x-input>
     </group>
 
     <group title="不显示清除按钮">

@@ -1,7 +1,7 @@
 <template>
   <div class="weui_cell weui_cell_switch">
     <div class="weui_cell_hd weui_cell_primary">
-      <label class="weui_label" :style="labelStyle" v-html="$t(title)"></label>
+      <label class="weui_label" v-html="$t(title)"></label>
       <inline-desc v-if="inlineDesc">{{$t(inlineDesc)}}</inline-desc>
     </div>
     <div class="weui_cell_ft">
@@ -53,6 +53,7 @@ export default {
 @import '../../styles/weui/widget/weui_cell/weui_form/weui_form_common';
 @import '../../styles/weui/widget/weui_cell/weui_switch';
 
+.weui_label {width:auto!important;}
 .weui_cell_switch .weui_cell_ft {
   font-size: 0;
 }

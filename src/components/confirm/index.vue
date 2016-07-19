@@ -5,11 +5,11 @@
   :dialog-transition="dialogTransition"
   @on-hide="$emit('on-hide')"
   @on-show="$emit('on-show')">
-    <div class="weui_dialog_hd"><strong class="weui_dialog_title">{{title}}</strong></div>
+    <div class="weui_dialog_hd"><strong class="weui_dialog_title">{{$t(title)}}</strong></div>
     <div class="weui_dialog_bd"><slot></slot></div>
     <div class="weui_dialog_ft">
-      <a href="javascript:;" class="weui_btn_dialog default" @click="onCancel">{{cancelText}}</a>
-      <a href="javascript:;" class="weui_btn_dialog primary" @click="onConfirm">{{confirmText}}</a>
+      <a href="javascript:;" class="weui_btn_dialog default" @click="onCancel">{{$t(cancelText)}}</a>
+      <a href="javascript:;" class="weui_btn_dialog primary" @click="onConfirm">{{$t(confirmText)}}</a>
     </div>
   </dialog>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <div class="weui_cell">
     <div class="weui_cell_bd weui_cell_primary">
-      <p>{{title}}</p>
+      <p>{{$t(title)}}</p>
     </div>
     <div class="weui_cell_ft" v-show="!readonly" style="font-size:0">
       <a @click="sub()" class="vux-number-selector vux-number-selector-sub needsclick":class="{'vux-number-disabled':disabledMin}">-</a>
@@ -34,7 +34,7 @@ export default {
     },
     width: {
       type: Number,
-      default: 50
+      default: 40
     }
   },
   computed: {
@@ -79,10 +79,12 @@ export default {
 .vux-number-input {
   float:left;
   height:20px;
-  font-size:20px;
+  font-size:17px;
   color: #666;
   appearance: none;
-  border:1px solid #ececec;
+  border:none;
+  border-left:1px solid #ececec;
+  border-right:1px solid #ececec;
   padding:3px 0;
   text-align:center;
   border-radius: 1px;
@@ -92,8 +94,9 @@ export default {
   height:20px;
   font-size:25px;
   line-height:18px;
-  color:#3cc51f;
-  border:1px solid #ececec;
+  color:#A1C46C;
+  border-left:1px solid #ececec;
+  border-right:1px solid #ececec;
 }
 .vux-number-selector.vux-number-disabled{
   color:#ccc;

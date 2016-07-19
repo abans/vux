@@ -4,7 +4,7 @@
       <p>{{$t(title)}}</p>
       <inline-desc v-if="inlineDesc">{{$t(inlineDesc)}}</inline-desc>
     </div>
-    <div class="weui_cell_ft vux-datetime-value" :class="{'weui_cell_primary':primary==='content', 'with_arrow': isLink, 'text_center': isCalendar}">{{value || $t(placeholder)}}</div>
+    <div class="weui_cell_ft vux-datetime-value" :class="{'weui_cell_primary':primary==='content', 'with_arrow': isLink, 'text_center': isCalendar}"><span v-if="!isCell">{{value || $t(placeholder)}}</span></div>
     <span class="aicon aicon-calendar" v-if="isCalendar"></span>
   </a>
 </template>
@@ -24,6 +24,7 @@ export default {
   props: {
     isLink: Boolean,
     isCalendar: Boolean,
+    isCell: Boolean,
     format: {
       type: String,
       default: 'YYYY-MM-DD'
@@ -231,7 +232,7 @@ export default {
 }
 
 .dp-header .dp-item {
-  color: #04BE02;
+  color: #A4C364;
   font-size: 18px;
   height: 44px;
   line-height: 44px;

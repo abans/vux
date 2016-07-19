@@ -91,7 +91,7 @@
     default-item-class="demo5-item"
     selected-item-class="demo5-item-selected"
     >
-      <checker-item v-for="i in [1, 2, 3]" :value="i">{{['good', 'nice','awesome'][i - 1]}}</checker-item>
+      <checker-item v-for="i in [1, 2, 3, 4, 5, 6]" :value="i">{{['good', 'nice','awesome', 'aaa', 'bbb', 'ccc'][i - 1]}}</checker-item>
     </checker>
   </div>
 </template>

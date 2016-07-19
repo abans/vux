@@ -1,7 +1,7 @@
 <template>
   <div>
     <group>
-      <cell title="My Account" value="Protected"></cell>
+      <cell inline-desc="[a,b]" title="My Account" value="Protected"></cell>
     </group>
 
     <group title="use is-link to show arrow">

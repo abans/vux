@@ -92,6 +92,7 @@ var locales = {
     message: {
       hello: 'Hello world',
       lang: 'Language',
+      ok: 'Ok',
       cancel: 'Cancel'
     }
   },
@@ -99,6 +100,7 @@ var locales = {
     message: {
       hello: 'こんにちは、世界',
       lang: '言語',
+      ok: 'Ok',
       cancel: 'キャンセル'
     }
   }

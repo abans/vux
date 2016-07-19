@@ -5,11 +5,11 @@
       <inline-desc v-if="inlineDesc">{{inlineDesc}}</inline-desc>
     </div>
     <div class="weui_cell_bd weui_cell_primary">
-      <input class="weui_input" :style="inputStyle" :type="type" :name="name" :pattern="pattern" placeholder="{{placeholder}}" v-model="value" :readonly="readonly" @blur="blur" v-el:input/>
+      <input class="weui_input" :style="inputStyle" :type="type" :name="name" :pattern="pattern" placeholder="{{$t(placeholder)}}" v-model="value" :readonly="readonly" @blur="blur" v-el:input/>
     </div>
     <div class="weui_cell_ft">
       <icon type="clear" v-show="showClear && value" @click="clear"></icon>
-      <icon type="warn" title="{{!valid ? firstError : ''}}" v-show="!equalWith && ((touched && !valid && firstError) || (forceShowError && !valid && firstError))"></icon>
+      <icon type="warn" v-show="showWarn" title="{{!valid ? firstError : ''}}" v-show="!equalWith && ((touched && !valid && firstError) || (forceShowError && !valid && firstError))"></icon>
       <icon type="warn" v-show="hasLengthEqual && dirty && equalWith && !valid"></icon>
       <icon type="success" v-show="equalWith && equalWith===value && valid"></icon>
       <slot name="right"><slot>
@@ -84,6 +84,10 @@ export default {
     isType: String,
     min: Number,
     max: Number,
+    showWarn: {
+      type: Boolean,
+      default: false
+    },
     showClear: {
       type: Boolean,
       default: true

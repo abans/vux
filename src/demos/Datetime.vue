@@ -5,7 +5,7 @@
     </group>
 
     <group title="YYYY-MM-DD HH:mm">
-      <datetime :value.sync="value2" format="YYYY-MM-DD HH:mm" @on-change="change" title="start time" inline-desc="select hour and minute"></datetime>
+      <datetime :value.sync="value2" format="YYYY-MM-DD HH:mm" is-link is-cell @on-change="change" title="start time" :inline-desc.sync="value2"></datetime>
     </group>
 
     <group title="Placeholder">
