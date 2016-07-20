@@ -1,6 +1,9 @@
 <template>
   <div class="weui_cells_radio">
     <label class="weui_cell weui_cell_radio weui_check_label" for="radio_{{uuid}}_{{index}}" v-for="(index,one) in options">
+      <div class="weui_cell_hd">
+        <slot name="icon"></slot>
+      </div>
       <div class="weui_cell_bd weui_cell_primary">
         <p>{{one | getValue}}</p>
       </div>

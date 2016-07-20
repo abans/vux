@@ -1,7 +1,9 @@
 <template>
   <div>
     <group title="default">
-      <radio :options="radio001" @on-change="change"></radio>
+      <radio :options="radio001" @on-change="change">
+         <img slot="icon" class="pay" src="/static/ibeatop/images/wechat.png">
+      </radio>
     </group>
 
     <group title="preselect 'China'">
