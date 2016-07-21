@@ -11,7 +11,7 @@
     <toast :show.sync="show1" >默认提示</toast>
     <toast :show.sync="show2" type="text">处理成功</toast>
     <toast :show.sync="show3" type="cancel">取消操作</toast>
-    <toast :show.sync="show4" type="warn">禁止操作</toast>
+    <toast :show.sync="show4" type="warn">禁禁止操作禁止操作禁止操作禁止操作止操作</toast>
     <toast :show.sync="show5" :time="1000">1s关闭</toast>
     <toast :show.sync="show6" type="text" width="20em">Talk is cheap, show me the code.</toast>
   </div>

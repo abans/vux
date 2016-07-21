@@ -253,6 +253,6 @@ export default {
   flex: 1;
   text-align: center;
 }
-.aicon {color:#888;}
+.aicon-calendar {color:#888;}
 .text_center{text-align: center;}
 </style>

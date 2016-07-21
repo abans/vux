@@ -1,5 +1,5 @@
 <template>
-  <div class="weui_cell" :class="{'vux-tap-active': isLink || !!link}" @click="onClick">
+  <div class="weui_cell" :class="{'vux-tap-active': isLink}" @click="onClick">
     <div class="weui_cell_hd">
       <slot name="icon"></slot>
     </div>
@@ -10,7 +10,7 @@
       </p>
       <inline-desc v-if="inlineDesc">{{$t(inlineDesc)}}</inline-desc>
     </div>
-    <div class="weui_cell_ft" :class="{'weui_cell_primary':primary==='content', 'with_arrow': isLink || !!link}">
+    <div class="weui_cell_ft" :class="{'weui_cell_primary':primary==='content', 'with_arrow': isLink}">
       {{$t(value)}}
       <slot name="value"></slot>
       <slot></slot>
@@ -21,7 +21,7 @@
 <script>
 import InlineDesc from '../inline-desc'
 import { go } from '../../libs/router'
-let Afn
+let afn
 
 export default {
   components: {
@@ -42,8 +42,8 @@ export default {
   },
   methods: {
     onClick () {
-      if (Afn && Afn.window) {
-        Afn.window.open(this.link, '', '_blank')
+      if (afn && afn.window) {
+        afn.window.open(this.link, '', '_blank')
       } else {
         go(this.link, this.$router)
       }

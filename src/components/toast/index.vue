@@ -2,7 +2,6 @@
   <div v-show="show" class="vux-toast" :transition="transition">
     <div class="weui_mask_transparent"></div>
       <div class="weui_toast" :style="{width: width}" :class="toastClass">
-        <i class="weui_icon_toast" v-show="type !== 'text'"></i>
         <p class="weui_toast_content"><slot></slot></p>
       </div>
   </div>
@@ -29,7 +28,7 @@ export default {
     },
     width: {
       type: String,
-      default: '7.6em'
+      default: '95%'
     }
   },
   computed: {
@@ -64,8 +63,9 @@ export default {
   transform: translateX(-50%);
   margin-left: 0!important;
 }
-.weui_toast_forbidden {
-  color: #F76260;
+div.weui_toast_forbidden {
+  background-color:rgba(208, 99, 104, 0.75);
+  color: #fff;
 }
 .weui_toast.weui_toast_text{
   min-height: 0;

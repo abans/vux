@@ -127,6 +127,7 @@ export default {
     blur () {
       this.setTouched()
       this.validate()
+      this.$emit('on-blur')
     },
     getError () {
       let key = Object.keys(this.errors)[0]

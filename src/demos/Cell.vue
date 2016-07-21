@@ -4,7 +4,7 @@
       <cell inline-desc="[a,b]" title="My Account" value="Protected"></cell>
     </group>
 
-    <group title="use is-link to show arrow">
+    <group title="use is-link to show arrow" link="http://baidu.com">
       <cell title="Notifications" is-link></cell>
       <cell title="Privacy" is-link></cell>
       <cell title="General" is-link>
