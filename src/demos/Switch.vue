@@ -1,7 +1,7 @@
 <template>
   <div>
     <group title="default">
-      <switch title="default setting"></switch>
+      <switch title="default setting" key="test" @on-change="change"></switch>
       <switch title="default true" :value="true"></switch>
     </group>
     <group title="disabled">
@@ -21,6 +21,11 @@ export default {
   components: {
     Switch,
     Group
+  },
+  methods: {
+    change (val, key) {
+      console.log(val, key)
+    }
   }
 }
 </script>

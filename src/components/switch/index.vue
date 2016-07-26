@@ -35,6 +35,7 @@ export default {
       type: Boolean,
       default: false
     },
+    key: String,
     value: {
       type: Boolean
     },
@@ -43,7 +44,7 @@ export default {
   ready () {},
   watch: {
     value (newVal) {
-      this.$emit('on-change', newVal)
+      this.$emit('on-change', newVal, this.key)
     }
   }
 }
