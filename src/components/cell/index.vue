@@ -21,7 +21,7 @@
 <script>
 import InlineDesc from '../inline-desc'
 import { go } from '../../libs/router'
-let afn
+let Afn
 
 export default {
   components: {
@@ -42,8 +42,8 @@ export default {
   },
   methods: {
     onClick () {
-      if (afn && afn.window) {
-        afn.window.open(this.link, '', '_blank')
+      if (Afn && Afn.window) {
+        Afn.window.open(this.link, '', '_blank')
       } else {
         go(this.link, this.$router)
       }
