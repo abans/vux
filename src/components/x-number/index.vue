@@ -1,12 +1,19 @@
 <template>
   <div class="weui_cell">
+    <div class="weui_cell_hd">
+      <slot name="icon"></slot>
+    </div>
     <div class="weui_cell_bd weui_cell_primary">
       <p>{{$t(title)}}</p>
     </div>
     <div class="weui_cell_ft" v-show="!readonly" style="font-size:0">
-      <a @click="sub()" class="vux-number-selector vux-number-selector-sub needsclick":class="{'vux-number-disabled':disabledMin}">-</a>
-      <input v-model="value" :name="name" class="vux-number-input" :style="{width: width+'px'}" number :readonly="!fillable" pattern="[0-9]*"/>
-      <a @click="add()" class="vux-number-selector vux-number-selector-plus needsclick" :class="{'vux-number-disabled':disabledMax}">+</a>
+      <a @click="sub()" class="vux-number-selector vux-number-selector-sub needsclick":class="{'vux-number-disabled':disabledMin}" v-show="!disabledMin">
+        <span class="aicon aicon-minus-circle"></span>
+      </a>
+      <input v-model="value" :name="name" class="vux-number-input" :style="{width: width+'px'}" number :readonly="!fillable" pattern="[0-9]*" v-show="!disabledMin"/>
+      <a @click="add()" class="vux-number-selector vux-number-selector-plus needsclick" :class="{'vux-number-disabled':disabledMax}">
+        <span class="aicon aicon-add-circle"></span>
+      </a>
     </div>
     <div class="weui_cell_ft" v-else>
       {{value}}
@@ -34,7 +41,7 @@ export default {
     },
     width: {
       type: Number,
-      default: 40
+      default: 35
     }
   },
   computed: {
@@ -83,9 +90,6 @@ export default {
   color: #666;
   appearance: none;
   border:none;
-  border-left:1px solid #ececec;
-  border-right:1px solid #ececec;
-  padding:3px 0;
   text-align:center;
   border-radius: 1px;
 }
@@ -94,22 +98,17 @@ export default {
   height:20px;
   font-size:25px;
   line-height:18px;
-  color:#A1C46C;
-  border-left:1px solid #ececec;
-  border-right:1px solid #ececec;
+  color:#34cc99;
 }
 .vux-number-selector.vux-number-disabled{
   color:#ccc;
 }
 .vux-number-selector-sub {
   border-right:none;
-  padding:3px 10px;
   border-radius:2px 0 0 2px;
 }
 .vux-number-selector-plus {
   border-left:none;
-  margin-right: 5px;
-  padding:3px 8px;
   border-radius:0 2px 2px 0;
 }
 </style>

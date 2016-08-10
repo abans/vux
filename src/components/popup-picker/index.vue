@@ -109,7 +109,7 @@ export default {
 }
 .vux-popup-picker-header {
   height: 44px;
-  color: #04BE02;
+  color: #34cc99;
 }
 .vux-popup-picker-value {
   display: inline-block;

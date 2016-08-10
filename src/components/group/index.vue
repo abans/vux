@@ -8,7 +8,7 @@
       {{$t(value)}}<slot name="value"></slot>
       </div>
     </div>
-    <div class="weui_cells" :class="{'vux-group-title':title}">
+    <div class="weui_cells" :class="{'vux-group-title':title || seamless}">
       <slot></slot>
     </div>
   </div>
@@ -24,6 +24,7 @@ export default {
   props: {
     title: String,
     value: String,
+    seamless: Boolean,
     primary: {
       type: String,
       default: 'title'
@@ -45,9 +46,6 @@ export default {
 }
 .weui_cells > a {
   color:#000;
-}
-div.weui_cells_title{
-  padding-right:0;
 }
 .weui_group_title .weui_cells_title p{
   font-size: 14px;

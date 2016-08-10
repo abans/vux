@@ -15,6 +15,21 @@
     }
 }
 
+.weui_btn_plain_warn{
+    color: @weuiBtnWarnBg;
+    border: 1px solid @weuiBtnWarnBg;
+    button&, input& {
+        border-width: 1px;
+        background-color: transparent;
+    }
+    &:active {
+        border-color: @weuiBtnWarnActiveBg;
+    }
+    &:after {
+        border-width: 0;
+    }
+}
+
 .weui_btn_plain_default {
     color: #5A5A5A;
     border: 1px solid #b5b5b5;

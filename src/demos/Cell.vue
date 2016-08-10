@@ -1,13 +1,13 @@
 <template>
   <div>
-    <group>
-      <cell inline-desc="[a,b]" title="My Account" value="Protected"></cell>
+    <group seamless>
+      <cell title="My Account" value="Protected"></cell>
     </group>
 
     <group title="use is-link to show arrow" value="新西兰">
       <span slot="value">aa</span>
       <cell title="Notifications" is-link></cell>
-      <cell title="Privacy" is-link></cell>
+      <cell title="就读学校" primary="content" is-link value="宁宁波诺丁汉大学宁波诺丁汉大学宁波诺丁汉大学宁波诺丁汉大学波诺丁汉大学"></cell>
       <cell title="General" is-link :inline-desc="asdf">
         <img slot="icon" width="20" style="display:block;margin-right:5px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=">
         <span slot="after-title">test</span>
@@ -15,7 +15,7 @@
     </group>
 
     <group>
-      <cell title="Notifications" value="Enabled"></cell>
+      <cell title="Notifications" value="Enabled" is-link></cell>
     </group>
 
     <group title="use slot for complexed content">

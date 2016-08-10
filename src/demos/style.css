@@ -11,7 +11,8 @@
   font-family: 'vux-demo';
   font-size:20px;
   padding-right: 10px;
-  color: #04BE02;
+  /*color: #04BE02;*/
+  color: #34cc99;
 }
 
 .demo-icon:before {

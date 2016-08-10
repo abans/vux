@@ -1,8 +1,9 @@
 <template>
   <div>
     <img src="../assets/demo/filter_bg.jpg" style="width: 100%">
-    <search no-results="meiyou" placeholder="请选择学校" @result-click="resultClick" @on-change="getResult" :results="results" :value.sync="value"></search>
+    <search no-results="meiyou" show-badge placeholder="请选择学校" @result-click="resultClick" @on-change="getResult" :results="results" :show.sync="show" :value.sync="value"></search>
   </div>
+  <button @click='showSearch'>show search bar</button>
 </template>
 
 <script>
@@ -13,6 +14,9 @@ export default {
     Search
   },
   methods: {
+    showSearch () {
+      this.show = true
+    },
     resultClick (item) {
     },
     getResult (val) {
@@ -22,7 +26,8 @@ export default {
   data () {
     return {
       results: [],
-      value: ''
+      value: '',
+      show: false
     }
   }
 }

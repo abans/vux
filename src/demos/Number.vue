@@ -1,7 +1,9 @@
 <template>
   <div>
     <group title="Default">
-      <x-number name="number" title="Number"></x-number>
+      <x-number name="number" title="Number">
+        <span slot="icon" style="padding-right:15px;">asdf</span>
+      </x-number>
     </group>
 
     <group title="listen to change events">

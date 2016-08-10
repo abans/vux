@@ -8,7 +8,7 @@
 export default {
   props: {
     value: {
-      type: [String, Number],
+      type: [String, Number, Boolean],
       required: true
     },
     disabled: Boolean
@@ -22,7 +22,15 @@ export default {
         names[this.$parent.defaultItemClass] = true
       }
       if (this.$parent.selectedItemClass) {
-        names[this.$parent.selectedItemClass] = this.$parent.type === 'radio' ? (this.$parent.value === this.value) : (this.$parent.value.indexOf(this.value) > -1)
+        if (this.$parent.type === 'radio') {
+          names[this.$parent.selectedItemClass] = this.$parent.value === this.value
+        } else {
+          if (this.$parent.value.indexOf) {
+            names[this.$parent.selectedItemClass] = this.$parent.value.indexOf(this.value) > -1
+          } else {
+            names[this.$parent.selectedItemClass] = this.$parent.value
+          }
+        }
       }
       if (this.$parent.disabledItemClass) {
         names[this.$parent.disabledItemClass] = this.disabled
@@ -46,12 +54,20 @@ export default {
     },
     selectCheckbox () {
       if (!this.disabled) {
-        const index = this.$parent.value.indexOf(this.value)
-        if (index > -1) {
-          this.$parent.value.splice(index, 1)
+        if (this.$parent.value.indexOf) {
+          const index = this.$parent.value.indexOf(this.value)
+          if (index > -1) {
+            this.$parent.value.splice(index, 1)
+          } else {
+            if (!this.$parent.max || (this.$parent.max && this.$parent.value.length < this.$parent.max)) {
+              this.$parent.value.push(this.value)
+            }
+          }
         } else {
-          if (!this.$parent.max || (this.$parent.max && this.$parent.value.length < this.$parent.max)) {
-            this.$parent.value.push(this.value)
+          if (this.$parent.value) {
+            this.$parent.$set('value', false)
+          } else {
+            this.$parent.$set('value', true)
           }
         }
         this.$emit('on-item-click', this.value, this.disabled)

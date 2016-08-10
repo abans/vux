@@ -15,7 +15,7 @@ export default {
       default: 'radio'
     },
     value: {
-      type: [String, Number, Array]
+      type: [String, Number, Array, Boolean]
     },
     max: Number
   },
@@ -29,6 +29,7 @@ export default {
 
 <style>
 .vux-checker-item {
+  font-size: 15px;
   display: inline-block;
 }
 </style>

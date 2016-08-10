@@ -269,7 +269,7 @@ export default {
 
 body {
   font-family: Helvetica, sans-serif;
-  background-color: #fbf9fe;
+  background-color: #f0f1f5;
   padding-bottom: 50px;
 }
 

@@ -20,6 +20,11 @@
     <span>current value is: {{demo1Checkbox | json}}</span>
     <br>
 
+    <divider>checkbox boolean</divider>
+    <checker :value.sync="demo7" type="checkbox" default-item-class="demo1-item" selected-item-class="demo1-item-selected">
+      <checker-item value=false>1</checker-item>
+    </checker>
+    <br>
     <divider>checkbox with max limit</divider>
     <checker :value.sync="demo1CheckboxMax" :max="2" type="checkbox" default-item-class="demo1-item" selected-item-class="demo1-item-selected">
       <checker-item value="1">1</checker-item>
@@ -114,6 +119,7 @@ export default {
       demo1Checkbox: [2, 1],
       demo1CheckboxMax: ['2', '3'],
       demo2: '2',
+      demo7: true,
       demo3: '',
       demo4: '花跟叶',
       showPopup: false,

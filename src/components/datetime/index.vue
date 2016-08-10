@@ -131,13 +131,14 @@ export default {
   content: " ";
   display: inline-block;
   transform: rotate(45deg);
-  height: 6px;
-  width: 6px;
-  border-width: 2px 2px 0 0;
+  height: 12px;
+  width: 12px;
+  border-width: 1px 1px 0 0;
   border-color: #C8C8CD;
   border-style: solid;
   position: relative;
-  top: -1px;
+  top: 0;
+  right: 3px;
   margin-left: .3em;
 }
 .scroller-component {
@@ -232,7 +233,7 @@ export default {
 }
 
 .dp-header .dp-item {
-  color: #A4C364;
+  color: #34cc99;
   font-size: 18px;
   height: 44px;
   line-height: 44px;

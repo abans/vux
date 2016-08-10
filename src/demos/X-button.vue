@@ -17,6 +17,7 @@
       <divider>plain</divider>
       <x-button plain>submit</x-button>
       <x-button plain type="primary">primary</x-button>
+      <x-button plain type="warn">warn</x-button>
       
       <divider>disabled</divider>
       <x-button disabled>disable submit</x-button>

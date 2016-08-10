@@ -3,10 +3,11 @@
 .weui_cell {
     // onepx
     position: relative;
+    background-color: @weuiCellBg;
     &:before {
         .setTopLine(@weuiCellBorderColor);
-        left: @weuiCellGapH;
-        right: @weuiCellGapH;
+        left: 0;
+        right: 0;
     }
     &:first-child {
         &:before {
@@ -20,7 +21,6 @@
     background-color: @weuiCellBg;
     line-height: @weuiCellLineHeight;
     font-size: @weuiCellFontSize; //cell中间有效高度23px，跟客户端默认图标尺寸一致
-    border-radius: 5px;
 
     overflow: hidden; //因为每个cell的border使用before元素left搞的，ie下伪元素的containing block估计跟标准不同，在cell上用oh不生效
 
@@ -39,8 +39,7 @@
 .weui_cells_title {
     margin-top: .77em; // 15px - 行高
     margin-bottom: .3em; // 8px - 行高
-    //padding-left: @weuiCellGapH;
-    padding-left: 0;
+    padding-left: @weuiCellGapH;
     color:#b5b5b5;
     padding-right: @weuiCellGapH;
     color: @globalTextColor;
@@ -66,7 +65,12 @@
     align-items: center;
 }
 
+.weui_cell_bd {
+    font-size: 15px;
+    color: @globalTitleColor;
+}
 .weui_cell_ft {
+    font-size: 15px;
     text-align: right;
     color: @globalTextColor;
 }

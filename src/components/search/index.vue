@@ -17,13 +17,18 @@
       <a href="javascript:" class="weui_search_cancel" id="search_cancel" @click="cancel">{{$t(cancelText)}}</a>
     </div>
     <div class="weui_cells weui_cells_access vux-search_show" id="search_show" v-show="isFixed && results && results.length && value">
-      <div class="weui_cell" v-for="item in results" @click="handleResultClick(item)">
+      <div class="weui_cell" v-for="item in results" @click="handleResultClick(item)" :class="{'with-badge': showBadge}">
+        <div class="weui_cell_hd" v-if="showBadge">
+          <div v-if="item.logo" class="item-badge" style="background-image:url({{item.logo}})"></div>
+          <div v-else class="defalut-item-badge item-badge"></div>
+        </div>
         <div class="weui_cell_bd weui_cell_primary">
           <p>{{item.title}}</p>
         </div>
       </div>
     </div>
     <div class="vux-no-results" v-if="isFixed && results === null">
+    <span class="aicon aicon-result"></span>
       {{$t(noResults)}}
     </div>
   </div>
@@ -53,6 +58,11 @@ export default {
       twoWay: true,
       default: ''
     },
+    show: {
+      type: Boolean,
+      twoWay: true,
+      default: false
+    },
     results: {
       type: Array,
       default () {
@@ -62,6 +72,10 @@ export default {
     autoFixed: {
       type: Boolean,
       default: true
+    },
+    showBadge: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {
@@ -72,6 +86,7 @@ export default {
     },
     cancel () {
       this.value = ''
+      this.show = false
       this.isCancel = true
       this.isFixed = false
       this.$emit('on-cancel')
@@ -79,6 +94,7 @@ export default {
     handleResultClick (item) {
       this.$emit('result-click', item)
       this.selectedItem = item
+      this.show = false
       this.isCancel = true
       this.isFixed = false
     },
@@ -110,6 +126,11 @@ export default {
         this.$el.classList.remove('vux-search-fixed')
       }
     },
+    show (val) {
+      if (val === true) {
+        this.touch()
+      }
+    },
     value (val) {
       this.$emit('on-change', this.value)
     }
@@ -121,6 +142,16 @@ export default {
 @import '../../styles/weui/icon/weui_icon_font';
 @import '../../styles/weui/widget/weui_searchbar/weui_searchbar';
 
+.item-badge{
+  display: block;
+  margin-right: 10px;
+  border-radius: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: none;
+}
 .vux-search-fixed {
   position: fixed;
   height: 100%;
@@ -133,15 +164,21 @@ export default {
 .vux-search-box {
   width: 100%;
 }
+.with-badge.weui_cell:before{
+  left:3.5em;
+}
 .vux-search_show {
   margin-top: 0;
   overflow-y: auto;
   height: 100%;
 }
 .vux-no-results {
-  padding: 45px;
+  padding: 90px 45px;
   text-align: center;
-  color: #A4C364;
+  color: #ababab;
+}
+.vux-no-results .aicon{
+  font-size: 40px;
 }
 .vux-search-mask {
   position: absolute;

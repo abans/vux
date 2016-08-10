@@ -51,7 +51,8 @@ export default {
   position: relative;
   padding: 3px 0;
   box-sizing: border-box;
-  background-color: #575757;
+  background-color: #f6f6f6;
+  border-bottom: 1px solid #b4b4b6;
 }
 .vux-header .vux-header-title,.vux-header h1 {
   margin: 0 88px;
@@ -59,35 +60,34 @@ export default {
   line-height: 40px;
   text-align: center;
   height: 40px;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 400;
   width: auto;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: #fff
+  color: #323232;
 }
 .vux-header .vux-header-title a,.vux-header .vux-header-title a:active,.vux-header h1 a,.vux-header h1 a:active {
   color: #fff
 }
 .vux-header .vux-header-left,.vux-header .vux-header-right {
   position: absolute;
-  top: 14px;
+  top: 15px;
   display: block;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 21px;
-  color: #ccc
 }
 .vux-header .vux-header-left a,.vux-header .vux-header-left button,.vux-header .vux-header-right a,.vux-header .vux-header-right button {
   float: left;
   margin-right: 8px;
-  color: #ccc
 }
 .vux-header .vux-header-left a:active,.vux-header .vux-header-left button:active,.vux-header .vux-header-right a:active,.vux-header .vux-header-right button:active {
   opacity: .5
 }
 .vux-header .vux-header-left {
-  left: 18px
+  left: 12px;
+  color: #323232;
 }
 .vux-header .vux-header-left .vux-header-back {
   padding-left: 16px
@@ -96,18 +96,19 @@ export default {
   content: "";
   position: absolute;
   display: block;
-  top: 2px;
-  left: 0;
-  width: 12px;
-  height: 12px;
-  border: 1px solid #ccc;
+  top: 0;
+  left: 2px;
+  width: 17px;
+  height: 17px;
+  border: 1px solid #a6a6a6;
   border-width: 1px 0 0 1px;
-  margin-left: 3px;
+  margin-left: 0;
   margin-top: 1px;
   transform: rotate(315deg)
 }
 .vux-header .vux-header-right {
-  right: 15px
+  right: 12px;
+  color: #34cc99;
 }
 .vux-header .vux-header-right a,.vux-header .vux-header-right button {
   margin-left: 8px;
