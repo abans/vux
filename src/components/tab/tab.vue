@@ -36,10 +36,10 @@ export default {
   },
   computed: {
     barLeft () {
-      return `${this.index * (100 / this.number)}%`
+      return `${this.index * (100 / this.number) + 4}%`
     },
     barRight () {
-      return `${(this.number - this.index - 1) * (100 / this.number)}%`
+      return `${(this.number - this.index - 1) * (100 / this.number) + 4}%`
     },
     barStyle () {
       return {
@@ -103,7 +103,7 @@ export default {
 .vux-tab {
   display: flex;
   background-color: #fff;
-  height: 44px;
+  height: 50px;
   position: relative;
 }
 .vux-tab button {
@@ -119,11 +119,11 @@ export default {
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  background: linear-gradient(180deg, #e5e5e5, #e5e5e5, rgba(229, 229, 229, 0)) bottom left no-repeat;
+  background: linear-gradient(180deg, #e5e5e5, #b5b3b6, rgba(229, 229, 229, 0)) bottom left no-repeat;
   background-size: 100% 1px;
   font-size: 14px;
   text-align: center;
-  line-height: 44px;
+  line-height: 50px;
   color: #666;
 }
 .vux-tab .vux-tab-item.vux-tab-selected {

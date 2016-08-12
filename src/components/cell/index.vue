@@ -5,6 +5,7 @@
     </div>
     <div class="weui_cell_bd" :class="{'weui_cell_primary':primary==='title'}">
       <p>
+        <slot name="before-title"></slot>
         {{$t(title)}}
         <slot name="after-title"></slot>
       </p>

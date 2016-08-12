@@ -87,7 +87,7 @@ export default {
   left: 0;
   bottom: 0;
   width: 100%;
-  background: #eee;
+  background: #f0f1f5;
   z-index: 101;
   transition-property: transform;
   transition-duration: 300ms;
